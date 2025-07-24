@@ -1,31 +1,59 @@
-# python-project
+# Nightscout CGM LibreView Uploader
+
+A Python application that fetches glucose data from LibreView and uploads it to Nightscout.
 
 ## Overview
-This project is a Python package designed to interact with the Nightscout API, allowing users to send glucose data to a Nightscout server.
 
-## Structure
-The project consists of the following files and directories:
+This application connects to the LibreView API to retrieve Continuous Glucose Monitoring (CGM) data and automatically uploads it to your Nightscout instance.
 
-- `src/`: Contains the source code for the Nightscout package.
-  - `nightscout/`: The main package directory.
-    - `__init__.py`: Initializes the `nightscout` package.
-    - `nightscout_client.py`: Contains the `NightscoutClient` class for sending glucose data.
-    - `glucose_data.py`: Defines the `GlucoseData` class representing glucose data structure.
-- `requirements.txt`: Lists the dependencies required for the project.
-- `setup.py`: Used for packaging the project and includes metadata.
+## Prerequisites
+
+- Python 3.11 or higher
+- Docker (optional)
+- A LibreView account
+- A Nightscout instance
 
 ## Installation
-To install the required dependencies, run:
+
+### Using Docker (Recommended)
+
+1. Clone this repository:
+```bash
+git clone https://github.com/logicielalm/nightscout-cgm-libreview.git
+cd nightscout-cgm-libreview
+```
+
+2. Build and run the Docker container:
+```bash
+docker-compose up --build
+```
+
+3. Access the application:
+```
+http://localhost:5000
+```
+
+## Configuration
+
+Create a `.env` file in the project root and add your LibreView and Nightscout credentials:
 
 ```
-pip install -r requirements.txt
+LIBREVIEW_EMAIL=your_libreview_email
+LIBREVIEW_PASSWORD=your_libreview_password
+NIGHTSCOUT_URL=http://your_nightscout_url
+NIGHTSCOUT_API_SECRET=your_nightscout_api_secret
 ```
 
 ## Usage
-To use the `NightscoutClient`, import it from the `nightscout` package and create an instance with the Nightscout URL and API secret. Use the provided methods to send glucose data.
+
+1. Start the application (see [Installation](#installation)).
+2. The application will fetch the latest CGM data from LibreView and upload it to Nightscout.
+3. Access the web interface at `http://localhost:5000` to monitor the upload status.
 
 ## Contributing
+
 Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
 
 ## License
+
 This project is licensed under the MIT License. See the LICENSE file for details.
