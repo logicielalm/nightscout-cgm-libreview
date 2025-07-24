@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  cgm_uploader:
+    build: .
+    image: nightscout-cgm-libreview
+    env_file: .env
+    restart: unless-stopped
+    environment:
+      - LIBREVIEW_EMAIL
+      - LIBREVIEW_PASSWORD
+      - LIBREVIEW_URL
+      - NIGHTSCOUT_URL
+      - NIGHTSCOUT_API_SECRET
+      - NIGHTSCOUT_REFRESH_MINUTES
+      - TIMEZONE
