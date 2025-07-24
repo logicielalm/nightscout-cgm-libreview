@@ -1,5 +1,5 @@
 from typing import List
-import requests
+import requests # type: ignore
 from libreview.glucose_data_result_item_result import GlucoseDataResultItemResult
 
 class GlucoseDataResult:

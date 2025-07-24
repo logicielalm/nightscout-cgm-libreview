@@ -1,4 +1,4 @@
-import requests
+import requests # type: ignore
 import hashlib
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -18,7 +18,7 @@ class NightscoutClient:
         print(f"🔄 Envoi des données CGM à Nightscout : {glucose_data.sgv} mg/dL")
 
         hashed_secret = hashlib.sha1(self.api_secret.encode('utf-8')).hexdigest()
-        
+
         entry = {
             "type": glucose_data.type,
             "date": glucose_data.date,
