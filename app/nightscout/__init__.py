@@ -1,0 +1,3 @@
+"""
+Nightscout client package
+"""

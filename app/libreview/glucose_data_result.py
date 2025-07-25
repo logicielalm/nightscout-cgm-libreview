@@ -1,6 +1,6 @@
 from typing import List
-import requests # type: ignore
-from libreview.glucose_data_result_item_result import GlucoseDataResultItemResult
+import requests  # type: ignore
+from app.libreview.glucose_data_result_item_result import GlucoseDataResultItemResult
 
 class GlucoseDataResult:
     def __init__(self, response: requests.Response):

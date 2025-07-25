@@ -1,7 +1,6 @@
-import requests # type: ignore
-from datetime import datetime
-from libreview.auth_info_result import AuthInfoResult
-from libreview.glucose_data_result import GlucoseDataResult
+import requests
+from app.libreview.auth_info_result import AuthInfoResult
+from app.libreview.glucose_data_result import GlucoseDataResult
 
 
 class LibreViewClient:

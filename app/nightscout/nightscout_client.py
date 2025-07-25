@@ -1,12 +1,9 @@
-import requests # type: ignore
+import requests
+from app.nightscout.glucose_data import GlucoseData
 import hashlib
-from datetime import datetime
-from zoneinfo import ZoneInfo
-
-from nightscout.glucose_data import GlucoseData
 
 class NightscoutClient:
-    def __init__(self, nightscout_url, api_secret):
+    def __init__(self, nightscout_url: str, api_secret: str):
         self.nightscout_url = nightscout_url
         self.api_secret = api_secret
 

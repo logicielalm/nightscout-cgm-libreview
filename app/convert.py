@@ -1,8 +1,8 @@
 from datetime import datetime
 from typing import List
 from zoneinfo import ZoneInfo
-from nightscout.glucose_data import GlucoseData
-from libreview.glucose_data_result import GlucoseDataResult
+from app.nightscout.glucose_data import GlucoseData
+from app.libreview.glucose_data_result import GlucoseDataResult
 
 def convert_to_glucose_data_list(glucose_data: GlucoseDataResult) -> List[GlucoseData]:
     result:List[GlucoseData] =[]

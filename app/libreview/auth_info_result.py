@@ -1,10 +1,11 @@
 from datetime import datetime
-import requests # type: ignore
-
-from libreview.constants import Constants
+import requests  # type: ignore
+from app.libreview.constants import Constants
 
 class AuthInfoResult:
-    def __init__(self, response: requests.Response):
+    def __init__(self, response):
+
+        
         self.response = response
         self.success = response.status_code == 200
         try:
@@ -12,7 +13,7 @@ class AuthInfoResult:
             self.token = data["authTicket"]["token"]
             self.user_id = data["user"]["id"]
             self.expires = datetime.fromtimestamp(int(data["authTicket"]["expires"]))
-            self.success = True
+            print(f"🔑 AuthInfoResult initialized with response: {data['authTicket']['expires']}")
         except ValueError:
             self.user_id = None
             self.token = None

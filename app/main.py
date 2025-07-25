@@ -1,9 +1,9 @@
 from datetime import datetime
 import time
 import traceback
-from convert import convert_to_glucose_data_list
-from libreview.libreview_client import LibreViewClient
-from nightscout.nightscout_client import NightscoutClient
+from app.convert import convert_to_glucose_data_list
+from app.libreview.libreview_client import LibreViewClient
+from app.nightscout.nightscout_client import NightscoutClient
 
 
 def init_from_environment_variables():
