@@ -19,6 +19,29 @@ jobs:
       with:
         fetch-depth: 0
 
+    - name: Run tests and extract reports
+      run: |
+        mkdir -p testreports coverage
+        docker build --target test .
+        docker build --target reports --output type=local,dest=. .
+
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        files: testreports/junit.xml
+    
+    - name: Archive test and coverage results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: test-results
+        path: |
+          testreports/
+          coverage/
+
+    #TODO ADD SONARQUBE
+    
     - name: Install GitVersion
       uses: gittools/actions/gitversion/setup@v4.0.1
       with:
