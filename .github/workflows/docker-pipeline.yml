@@ -25,7 +25,7 @@ jobs:
         versionSpec: '6.3.x'
         preferLatestVersion: true
 
-    - name: Determine Version
+    - name: Determine Version for tag
       id: gitversion # step id used as a reference for output values
       uses: gittools/actions/gitversion/execute@v4.0.1
 
