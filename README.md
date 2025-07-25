@@ -28,11 +28,6 @@ cd nightscout-cgm-libreview
 docker-compose up --build
 ```
 
-3. Access the application:
-```
-http://localhost:5000
-```
-
 ## Configuration
 
 Create a `.env` file in the project root and add your LibreView and Nightscout credentials:
@@ -48,7 +43,7 @@ NIGHTSCOUT_API_SECRET=your_nightscout_api_secret
 
 1. Start the application (see [Installation](#installation)).
 2. The application will fetch the latest CGM data from LibreView and upload it to Nightscout.
-3. Access the web interface at `http://localhost:5000` to monitor the upload status.
+3. Run it in sidecar with Nightscout.
 
 ## Contributing
 
