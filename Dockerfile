@@ -1,4 +1,4 @@
-FROM python:3.11-slim as builder
+FROM python:3.13-alpine3.22 as builder
 
 WORKDIR /app
 
@@ -11,12 +11,12 @@ RUN pip install -e .
 # Stage de test et couverture
 FROM builder as test
 RUN pip install pytest pytest-cov
-RUN mkdir /testreports /coverage
+RUN mkdir -p /app/testreports /app/coverage
 RUN pytest \
-    --junitxml=/testreports/junit.xml \
+    --junitxml=/app/testreports/junit.xml \
     --cov=app \
-    --cov-report=xml:/coverage/coverage.xml \
-    --cov-report=html:/coverage/htmlcov
+    --cov-report=xml:/app/coverage/coverage.xml \
+    --cov-report=html:/app/coverage/htmlcov
 
 # Stage des rapports
 FROM scratch as reports
