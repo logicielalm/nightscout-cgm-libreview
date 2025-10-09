@@ -17,7 +17,8 @@ def init_from_environment_variables():
     TIMEZONE = ZoneInfo(os.getenv("TIMEZONE", "America/Montreal"))
     NIGHTSCOUT_URL = os.getenv("NIGHTSCOUT_URL")
     NIGHTSCOUT_API_SECRET = os.getenv("NIGHTSCOUT_API_SECRET")
-    NIGHTSCOUT_REFRESH_SECONDS = int(os.getenv("NIGHTSCOUT_REFRESH_SECONDS", 120))
+    NIGHTSCOUT_REFRESH_SECONDS = float(os.getenv("NIGHTSCOUT_REFRESH_SECONDS", 120))
+    print(f"🌍 Configuration : LIBREVIEW_EMAIL='{LIBREVIEW_EMAIL}', LIBREVIEW_URL='{LIBREVIEW_URL}', NIGHTSCOUT_URL='{NIGHTSCOUT_URL}', NIGHTSCOUT_API_SECRET='****', NIGHTSCOUT_REFRESH_SECONDS='{NIGHTSCOUT_REFRESH_SECONDS}', TIMEZONE='{TIMEZONE}'")
 
 
 def init():
@@ -34,14 +35,14 @@ def main():
     while True:
         if auth_info is None or auth_info.expires <= datetime.now():
             auth_info = LIBRE_VIEW_CLIENT.librelink_login(LIBREVIEW_EMAIL, LIBREVIEW_PASSWORD)
-
+            print(auth_info)
         if auth_info.success:
             try:
                 glucose_data = LIBRE_VIEW_CLIENT.get_glucose_data(auth_info)
                 if glucose_data:
-                    NIGHTSCOUT_CLIENT.send_glucose_data_list(convert_to_glucose_data_list(glucose_data, TIMEZONE))
+                   NIGHTSCOUT_CLIENT.send_glucose_data_list(convert_to_glucose_data_list(glucose_data, TIMEZONE))
                 else:
-                    print("⚠️ Aucune donnée CGM disponible.")
+                   print("⚠️ Aucune donnée CGM disponible.")
             except Exception as e:
                 print(f"❌ Erreur : {e}")
                 traceback.print_exc()
